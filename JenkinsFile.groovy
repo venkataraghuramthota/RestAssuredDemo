@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-
+    tools {
+        jdk 'JDK 8'          // Name of JDK configured in Jenkins (Manage Jenkins → Global Tool Configuration)
+        maven 'TestMaven'       // Name of Maven tool configured in Jenkins
+    }
     environment {
         MAVEN_OPTS = "-Dmaven.test.failure.ignore=false"
         REPORT_DIR = "target/cucumber-reports"
