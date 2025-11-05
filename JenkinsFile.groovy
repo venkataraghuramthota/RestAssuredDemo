@@ -28,8 +28,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                echo 'Running Selenium + Cucumber + TestNG tests...'
-                sh 'mvn test -Dcucumber.options="--plugin pretty --plugin html:target/cucumber-reports/cucumber.html --plugin json:target/cucumber-reports/cucumber.json"'
+                echo 'Running  Cucumber  tests...'
+                sh 'mvn clean test -Dcucumber.options="--plugin pretty --plugin html:target/cucumber-reports/cucumber.html --plugin json:target/cucumber-reports/cucumber.json"'
             }
         }
 
@@ -42,16 +42,11 @@ pipeline {
                         reportName: 'Cucumber Test Report'
                 ])
 
-                junit 'target/surefire-reports/*.xml'  // TestNG/JUnit result files
+              //  junit 'target/surefire-reports/*.xml'  // TestNG/JUnit result files
             }
         }
 
-        stage('Archive Artifacts') {
-            steps {
-                echo 'Archiving report files...'
-                archiveArtifacts artifacts: 'target/cucumber-reports/**/*.*, target/surefire-reports/*.xml', fingerprint: true
-            }
-        }
+      
     }
 
     post {
