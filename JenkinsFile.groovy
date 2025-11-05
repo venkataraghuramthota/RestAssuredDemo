@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK17'          // Name of JDK configured in Jenkins (Manage Jenkins → Global Tool Configuration)
-        maven 'Maven3'       // Name of Maven tool configured in Jenkins
-    }
 
     environment {
         MAVEN_OPTS = "-Dmaven.test.failure.ignore=false"
